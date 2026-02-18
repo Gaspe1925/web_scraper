@@ -12,11 +12,17 @@ class Tag(Enum):
 class Product:
     url = ""
     description = ""
-    price = 0
+    price: float = 0
+    quantity: float = 0
     date = date.today()
     tag: str = Tag.NIL.name
     hasError = False
 
-    def __init__(self, url, tag: Tag) -> None:
+    def __init__(self, url, quantity, tag: Tag) -> None:
         self.url = url
+        self.quantity = quantity
         self.tag = tag.name
+
+    def price_per(self):
+        result = self.price / self.quantity
+        return result

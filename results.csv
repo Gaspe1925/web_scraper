@@ -1,5 +1,5 @@
-Date,URL,Description,Price,Tag,HasError
-2026-02-18,https://www.memoryexpress.com/Products/MX00120891,4TB IronWolf NAS HDD  SATA III w/ 256MB Cache,139.99,IRON_WOLF,False
-2026-02-18,https://www.memoryexpress.com/Products/MX00132129,ASRockARC B580 CHALLENGER OC 12GB PCI-E w/ HDMI  Triple DP,409.99,B_580_OC,False
-2026-02-18,https://www.memoryexpress.com/Products/MX00132128,ASRockARC B580 STEEL LEGEND 12GB OC PCI-E w/ HDMI  Triple DP,309.99,B_580_OC,False
-2026-02-18,https://www.memoryexpress.com/Products/MX00132130,Arc B580 Limited Edition 12GB PCI-E w/ HDMI  Triple DP,359.99,B_580,False
+Date,URL,Description,Price,Quantity,Price Per,Tag,HasError
+2026-02-18,https://www.memoryexpress.com/Products/MX00120891,4TB IronWolf NAS HDD  SATA III w/ 256MB Cache,139.99,1,139.99,IRON_WOLF,False
+2026-02-18,https://www.memoryexpress.com/Products/MX00132129,ASRockARC B580 CHALLENGER OC 12GB PCI-E w/ HDMI  Triple DP,409.99,1,409.99,B_580_OC,False
+2026-02-18,https://www.memoryexpress.com/Products/MX00132128,ASRockARC B580 STEEL LEGEND 12GB OC PCI-E w/ HDMI  Triple DP,409.99,1,409.99,B_580_OC,False
+2026-02-18,https://www.memoryexpress.com/Products/MX00132130,Arc B580 Limited Edition 12GB PCI-E w/ HDMI  Triple DP,359.99,1,359.99,B_580,False

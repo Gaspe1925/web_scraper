@@ -12,15 +12,17 @@ from product import Tag
 def get_list():
     return [
         product.Product(
-            "https://www.memoryexpress.com/Products/MX00120891", Tag.IRON_WOLF
+            "https://www.memoryexpress.com/Products/MX00120891", 1, Tag.IRON_WOLF
         ),
         product.Product(
-            "https://www.memoryexpress.com/Products/MX00132129", Tag.B_580_OC
+            "https://www.memoryexpress.com/Products/MX00132129", 1, Tag.B_580_OC
         ),
         product.Product(
-            "https://www.memoryexpress.com/Products/MX00132128", Tag.B_580_OC
+            "https://www.memoryexpress.com/Products/MX00132128", 1, Tag.B_580_OC
         ),
-        product.Product("https://www.memoryexpress.com/Products/MX00132130", Tag.B_580),
+        product.Product(
+            "https://www.memoryexpress.com/Products/MX00132130", 1, Tag.B_580
+        ),
     ]
 
 
@@ -38,11 +40,10 @@ def write_to_file(products):
 
     if not os.path.exists(globals.RESULTS_CSV):
         with open(globals.RESULTS_CSV, "w") as file:
-            file.write("Date,URL,Description,Price,Tag,HasError\n")
+            file.write("Date,URL,Description,Price,Quantity,Price Per,Tag,HasError\n")
 
     for item in products:
-        textToWrite += f"{item.date},{item.url},{item.description},{item.price},{item.tag},{item.hasError} \n"
-
+        textToWrite += f"{item.date},{item.url},{item.description},{item.price},{item.quantity},{item.price_per()},{item.tag},{item.hasError} \n"
     with open(globals.RESULTS_CSV, "a") as file:
         file.write(textToWrite)
 
@@ -52,8 +53,8 @@ def print_lowest_price():
     data = pd.read_csv(globals.RESULTS_CSV)
     dateToday = date.today()
     dataToday = data.query(f"Date=='{dateToday}'")
-    indexMin = dataToday.groupby("Tag")["Price"].idxmin()
-    dataLowestPrice = dataToday.loc[indexMin][["Date", "Tag", "Price", "URL"]]
+    indexMin = dataToday.groupby("Tag")["Price Per"].idxmin()
+    dataLowestPrice = dataToday.loc[indexMin][["Date", "Tag", "Price Per", "URL"]]
     print(dataLowestPrice)
 
     # aggregate data
@@ -62,4 +63,5 @@ def print_lowest_price():
         f"Date < '{dateToday}' and Date >= '{dateToday - lessDays}'"
     )
 
+    # join data here later
     print(dataPastDays)

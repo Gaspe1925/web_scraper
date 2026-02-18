@@ -13,4 +13,4 @@ def get(product: product.Product, driver):
     )
 
     product.description = itemTitle.text.replace("\n", "").replace(",", " ")
-    product.price = itemPrice.text.replace("Only$", "")
+    product.price = float(itemPrice.text.replace("Only$", ""))
