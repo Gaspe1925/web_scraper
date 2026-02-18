@@ -15,6 +15,7 @@ class Product:
     price = 0
     date = date.today()
     tag: str = Tag.NIL.name
+    hasError = False
 
     def __init__(self, url, tag: Tag) -> None:
         self.url = url
