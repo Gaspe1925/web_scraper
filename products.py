@@ -28,7 +28,7 @@ def get_list():
 
 def print_products(products):
     for item in products:
-        print(globals.DASH_LINE)
+        print(globals.dash_line())
         print(f"description: {item.description}")
         print(f"price:       {item.price}")
         print("")
@@ -50,6 +50,13 @@ def write_to_file(products):
 
 def print_lowest_price():
     # get lowest price
+    print(
+        f"""{globals.dash_line()}
+        Today's Lowest Prices
+{globals.dash_line()}
+        """
+    )
+
     data = pd.read_csv(globals.RESULTS_CSV)
     dateToday = date.today()
     dataToday = data.query(f"Date=='{dateToday}'")
@@ -57,11 +64,14 @@ def print_lowest_price():
     dataLowestPrice = dataToday.loc[indexMin][["Date", "Tag", "Price Per", "URL"]]
     print(dataLowestPrice)
 
-    # aggregate data
+    # aggregate past 30 days
     lessDays = timedelta(days=30)
     dataPastDays = data.query(
         f"Date < '{dateToday}' and Date >= '{dateToday - lessDays}'"
     )
+
+    # for index, row in df.iterrows():
+    #     print(row["c1"], row["c2"])
 
     # join data here later
     print(dataPastDays)
