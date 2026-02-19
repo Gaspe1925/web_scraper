@@ -3,6 +3,7 @@ from selenium import webdriver
 import memex_scraper
 import product
 import products
+import walmart_scraper
 
 
 def parse_domain(url):
@@ -15,9 +16,13 @@ def parse_domain(url):
 
 def scrape(item: product.Product, driver):
     urlParsed = parse_domain(item.url)
+    # print(urlParsed)
     match urlParsed:
         case "www.memoryexpress.com":
             memex_scraper.get(item, driver)
+            return
+        case "www.walmart.ca":
+            walmart_scraper.get(item, driver)
             return
 
 
@@ -33,7 +38,7 @@ def main():
     driver.close()
 
     products.print_products(items)
-    products.write_to_file(items)
+    # products.write_to_file(items)
 
 
 main()

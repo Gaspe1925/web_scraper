@@ -1,0 +1,16 @@
+from selenium.webdriver.common.by import By
+
+import product
+
+
+def get(product: product.Product, driver):
+    driver.delete_all_cookies()
+    driver.get(product.url)
+
+    # itemTitle = driver.find_element(By.ID, "main-title")
+    # itemPrice = driver.find_element(
+    #     By.CSS_SELECTOR, "div.c-capr-pricing__grand-total div"
+    # )
+
+    # product.description = itemTitle.text.replace("\n", "").replace(",", " ")
+    # product.price = itemPrice.text.replace("Only$", "")

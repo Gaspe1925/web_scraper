@@ -7,6 +7,7 @@ class Tag(Enum):
     IRON_WOLF = 1
     B_580 = 2
     B_580_OC = 3
+    DIAPER_SIZE_5 = 4
 
 
 class Product:

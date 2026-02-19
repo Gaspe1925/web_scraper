@@ -2,7 +2,6 @@ import os
 from datetime import date, timedelta
 
 import pandas as pd
-from pandas.core.dtypes.dtypes import datetime
 
 import globals
 import product
@@ -23,15 +22,22 @@ def get_list():
         product.Product(
             "https://www.memoryexpress.com/Products/MX00132130", 1, Tag.B_580
         ),
+        product.Product(
+            "https://www.walmart.ca/en/ip/Huggies-Little-Movers-HuggFit-360-Baby-Diapers-with-360-Waistband-Size-3-7-Count-136-70/6000208734927",
+            100,
+            Tag.DIAPER_SIZE_5,
+        ),
     ]
 
 
 def print_products(products):
     for item in products:
         print(globals.dash_line())
+        print(item.url)
         print(f"description: {item.description}")
         print(f"price:       {item.price}")
         print("")
+        return
 
 
 def write_to_file(products):
