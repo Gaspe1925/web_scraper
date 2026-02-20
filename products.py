@@ -11,6 +11,11 @@ from product import Tag
 def get_list():
     return [
         product.Product(
+            "https://www.costco.ca/apple-macbook-pro-142-in-apple-m5-chip---16-gb-ram-512-gb-ssd-space-black.product.4000356902.html",
+            1,
+            Tag.MACBOOK_PRO,
+        ),
+        product.Product(
             "https://www.memoryexpress.com/Products/MX00120891", 1, Tag.IRON_WOLF
         ),
         product.Product(
@@ -61,6 +66,8 @@ def write_to_file(products):
             file.write("Date,URL,Description,Price,Quantity,Price Per,Tag,HasError\n")
 
     for item in products:
+        if item.hasError:
+            continue
         textToWrite += f"{item.date},{item.url},{item.description},{item.price},{item.quantity},{item.price_per()},{item.tag},{item.hasError} \n"
     with open(globals.RESULTS_CSV, "a") as file:
         file.write(textToWrite)

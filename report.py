@@ -1,3 +1,8 @@
 import products
 
-products.print_lowest_price()
+
+def report():
+    products.print_lowest_price()
+
+
+report()

@@ -4,15 +4,16 @@ from enum import Enum
 
 class Tag(Enum):
     NIL = 0
-    IRON_WOLF = 1
-    B_580 = 2
-    B_580_OC = 3
-    DIAPER_SIZE_5 = 4
+    MACBOOK_PRO = 1
+    IRON_WOLF = 2
+    B_580 = 3
+    B_580_OC = 4
+    DIAPER_SIZE_5 = 5
 
 
 class Product:
-    url = ""
-    description = ""
+    url: str = ""
+    description: str = ""
     price: float = 0
     quantity: float = 0
     date = date.today()

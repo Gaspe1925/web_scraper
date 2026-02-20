@@ -15,7 +15,7 @@ def parse_domain(url):
     return urlTrimmed[0]
 
 
-def scrape(item: product.Product, driver):
+def get(item: product.Product, driver):
     urlParsed = parse_domain(item.url)
     match urlParsed:
         case "www.memoryexpress.com":
@@ -29,15 +29,15 @@ def scrape(item: product.Product, driver):
             return
 
 
-def main():
+def scrape():
 
     driver = webdriver.Chrome()
-    driver.minimize_window()
+    # driver.minimize_window()
     driver.maximize_window()
     items = products.get_list()
 
     for item in items:
-        scrape(item, driver)
+        get(item, driver)
 
     driver.close()
 
@@ -45,4 +45,4 @@ def main():
     # products.write_to_file(items)
 
 
-main()
+scrape()
