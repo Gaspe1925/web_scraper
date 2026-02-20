@@ -8,9 +8,9 @@ def get(product: product.Product, driver):
     driver.get(product.url)
 
     itemTitle = driver.find_element(By.CSS_SELECTOR, "header.c-capr-header h1")
+    product.description = itemTitle.text.replace("\n", "").replace(",", " ")
+
     itemPrice = driver.find_element(
         By.CSS_SELECTOR, "div.c-capr-pricing__grand-total div"
     )
-
-    product.description = itemTitle.text.replace("\n", "").replace(",", " ")
     product.price = float(itemPrice.text.replace("Only$", ""))

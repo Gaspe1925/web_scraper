@@ -1,5 +1,6 @@
 from time import sleep
 
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -7,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 import product
 
 
-def get(product: product.Product, driver):
+def get(product: product.Product, driver: webdriver.Chrome):
     # driver.delete_all_cookies()
 
     try:
