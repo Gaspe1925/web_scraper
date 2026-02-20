@@ -7,16 +7,26 @@ import product
 
 def get(product: product.Product, driver):
     driver.delete_all_cookies()
+
     driver.get(product.url)
 
     sleep(10)
+
+    hasTitleError = False
 
     try:
         itemTitle = driver.find_element(
             By.CSS_SELECTOR, "div.MuiTypography-root.MuiTypography-t1.mui-kzj5f"
         )
     except:
+        hasTitleError = True
+
+    if hasTitleError:
+        # try:
         itemTitle = driver.find_element(By.CSS_SELECTOR, "h1")
+        # except:
+        #     product.hasError = True
+        #     return
 
     itemPrice: str = ""
     hasPriceError = False

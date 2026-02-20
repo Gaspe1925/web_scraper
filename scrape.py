@@ -34,6 +34,8 @@ def scrape():
     driver = webdriver.Chrome()
     # driver.minimize_window()
     driver.maximize_window()
+    driver.delete_network_conditions
+    driver.delete_all_cookies
     items = products.get_list()
 
     for item in items:
