@@ -1,9 +1,10 @@
 from selenium import webdriver
 
-import memex_scraper
 import product
 import products
-import walmart_scraper
+import scraper_costco
+import scraper_memex
+import scraper_walmart
 
 
 def parse_domain(url):
@@ -16,13 +17,15 @@ def parse_domain(url):
 
 def scrape(item: product.Product, driver):
     urlParsed = parse_domain(item.url)
-    # print(urlParsed)
     match urlParsed:
         case "www.memoryexpress.com":
-            memex_scraper.get(item, driver)
+            scraper_memex.get(item, driver)
             return
         case "www.walmart.ca":
-            walmart_scraper.get(item, driver)
+            scraper_walmart.get(item, driver)
+            return
+        case "www.costco.ca":
+            scraper_costco.get(item, driver)
             return
 
 
@@ -30,6 +33,7 @@ def main():
 
     driver = webdriver.Chrome()
     driver.minimize_window()
+    driver.maximize_window()
     items = products.get_list()
 
     for item in items:

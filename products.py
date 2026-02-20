@@ -27,17 +27,29 @@ def get_list():
             100,
             Tag.DIAPER_SIZE_5,
         ),
+        product.Product(
+            "https://www.costco.ca/p/-/huggies-little-movers-plus-diapers-sizes-3-7/4000359823?storeId=10302&contractId=120950&contractId=120551&contractId=120552&contractId=120769&contractId=120771&contractId=120768&contractId=120773&contractId=120772&contractId=120770&contractId=120774&contractId=120554&contractId=4000000000000101007&contractId=120952&contractId=120553&contractId=81322&contractId=4000000000000001004&partNumber=4000359823&langId=-24&catalogId=11201",
+            156,
+            Tag.DIAPER_SIZE_5,
+        ),
     ]
 
 
 def print_products(products):
+    result: str = ""
     for item in products:
-        print(globals.dash_line())
-        print(item.url)
-        print(f"description: {item.description}")
-        print(f"price:       {item.price}")
-        print("")
-        return
+        result += globals.dash_line() + "\n"
+
+        if item.hasError == True:
+            result += f"Issue with: {item.url}\n\n"
+            continue
+
+        result += item.url + "\n"
+        result += f"description: {item.description}\n"
+        result += f"price:       {item.price}\n"
+        result += f"price per:   {item.price_per()}\n\n"
+    print(result)
+    return
 
 
 def write_to_file(products):
