@@ -12,6 +12,9 @@ def get(product: Product, driver: webdriver.Chrome):
     driver.get(product.url)
     sleep(10)
 
+    # need to click accept cookies class for button below
+    # onetrust-accept-btn-hanler
+
     # title portion
     hasTitleError = False
     itemTitle: str = ""
@@ -43,7 +46,8 @@ def get(product: Product, driver: webdriver.Chrome):
 
         for item in priceElements:
             itemPrice += item.text
-        itemPrice = itemPrice.replace("\n", "").split("$", 2)[1]
+        itemPrice = itemPrice.replace("\n", "")
+        itemPrice = itemPrice.split("$", 2)[1]
         length: int = len(itemPrice) - (len(itemPrice) - itemPrice.rfind("."))
         itemPrice = itemPrice[:length]
 

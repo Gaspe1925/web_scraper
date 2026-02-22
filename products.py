@@ -83,6 +83,7 @@ def print_lowest_price():
     )
 
     data = pd.read_csv(globals.RESULTS_CSV)
+    data["Date"] = pd.to_datetime(data["Date"])
     dateToday = date.today()
     dataToday = data.query(f"Date=='{dateToday}'")
     indexMin = dataToday.groupby("Tag")["Price Per"].idxmin()
